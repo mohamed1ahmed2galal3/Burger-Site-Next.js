@@ -209,3 +209,6 @@ npm run dev
 - ملف `.env.local` فيه بيانات حساسة — خليه في `.gitignore` دايمًا.
 - صفحة `setup-x7k9m2` لازم تتمسح أو تتحمي أكتر بعد إنشاء أول حساب أدمن.
 - لو غيّرت `NEXT_PUBLIC_SETUP_KEY`، حدّثه في كل بيئة (محلي + Vercel) بنفس القيمة.
+
+## Admin Register
+[الدومين بتاعك]/setup-x7k9m2?key=[المفتاح بتاع NEXT_PUBLIC_SETUP_KEY]

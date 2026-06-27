@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle, MapPin, Phone, User, CreditCard, Wallet } from "lucide-react";
+import { CheckCircle, MapPin, Phone, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { createOrder } from "@/lib/api/orders.js";
@@ -287,38 +287,6 @@ function Checkout() {
                 </motion.p>
               )}
             </AnimatePresence>
-          </motion.div>
-
-          <motion.div variants={fadeUp}>
-            <label className="text-zinc-400 text-sm mb-3 flex items-center gap-2">
-              <CreditCard size={15} /> طريقة الدفع
-            </label>
-            <div className="grid grid-cols-2 gap-3">
-              <motion.button
-                whileTap={{ scale: 0.97 }}
-                onClick={() => setForm({ ...form, payment: "cash" })}
-                className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl border font-medium transition-colors ${
-                  form.payment === "cash"
-                    ? "border-orange-500 bg-orange-500/10 text-orange-400"
-                    : "border-zinc-800 text-zinc-400 hover:border-zinc-700"
-                }`}
-              >
-                <Wallet size={18} />
-                كاش عند الاستلام
-              </motion.button>
-              <motion.button
-                whileTap={{ scale: 0.97 }}
-                onClick={() => setForm({ ...form, payment: "online" })}
-                className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl border font-medium transition-colors ${
-                  form.payment === "online"
-                    ? "border-orange-500 bg-orange-500/10 text-orange-400"
-                    : "border-zinc-800 text-zinc-400 hover:border-zinc-700"
-                }`}
-              >
-                <CreditCard size={18} />
-                دفع أونلاين
-              </motion.button>
-            </div>
           </motion.div>
         </motion.div>
 
