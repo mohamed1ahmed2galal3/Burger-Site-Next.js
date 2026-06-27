@@ -55,13 +55,13 @@ function TrackOrder() {
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleTrack()}
-            className="flex-1 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl py-3 px-4 focus:outline-none focus:border-orange-500 transition-colors text-right"
+            className="flex-1 min-w-0 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl py-3 px-4 focus:outline-none focus:border-orange-500 transition-colors text-right"
           />
           <motion.button
             whileTap={{ scale: 0.92 }}
             onClick={handleTrack}
             disabled={loading}
-            className="bg-orange-500 hover:bg-orange-400 disabled:opacity-50 text-white font-bold px-6 py-3 rounded-xl transition-colors flex items-center gap-2"
+            className="flex-shrink-0 bg-orange-500 hover:bg-orange-400 disabled:opacity-50 text-white font-bold px-6 py-3 rounded-xl transition-colors flex items-center gap-2"
           >
             {loading ? (
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
