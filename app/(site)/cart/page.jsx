@@ -60,54 +60,69 @@ function Cart() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 30, height: 0, marginBottom: 0 }}
                 transition={{ duration: 0.3 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 flex gap-4 items-center"
+                className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center gap-4"
               >
-                <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-xl flex-shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-bold mb-1">{item.name}</h3>
-                  <p className="text-orange-400 font-black">{item.price} جنيه</p>
-                </div>
-
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4 flex-1 min-w-0">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl flex-shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white font-bold mb-1 truncate">{item.name}</h3>
+                    <p className="text-orange-400 font-black">{item.price} جنيه</p>
+                  </div>
                   <motion.button
                     whileTap={{ scale: 0.85 }}
-                    onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                    className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white flex items-center justify-center transition-colors"
+                    onClick={() => removeFromCart(item.productId)}
+                    className="text-zinc-600 hover:text-red-400 transition-colors flex-shrink-0 sm:hidden"
                   >
-                    <Minus size={14} />
-                  </motion.button>
-                  <motion.span
-                    key={item.quantity}
-                    initial={{ scale: 1.4, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="text-white font-bold w-6 text-center"
-                  >
-                    {item.quantity}
-                  </motion.span>
-                  <motion.button
-                    whileTap={{ scale: 0.85 }}
-                    onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                    className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white flex items-center justify-center transition-colors"
-                  >
-                    <Plus size={14} />
+                    <Trash2 size={18} />
                   </motion.button>
                 </div>
 
-                <div className="text-right min-w-[80px]">
-                  <motion.p
-                    key={item.quantity}
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div className="flex items-center justify-between sm:justify-end gap-4 flex-shrink-0">
+                  <div className="flex items-center gap-3">
+                    <motion.button
+                      whileTap={{ scale: 0.85 }}
+                      onClick={() => updateQuantity(item.productId, item.quantity - 1)}
+                      className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white flex items-center justify-center transition-colors flex-shrink-0"
+                    >
+                      <Minus size={14} />
+                    </motion.button>
+                    <motion.span
+                      key={item.quantity}
+                      initial={{ scale: 1.4, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="text-white font-bold w-6 text-center"
+                    >
+                      {item.quantity}
+                    </motion.span>
+                    <motion.button
+                      whileTap={{ scale: 0.85 }}
+                      onClick={() => updateQuantity(item.productId, item.quantity + 1)}
+                      className="w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white flex items-center justify-center transition-colors flex-shrink-0"
+                    >
+                      <Plus size={14} />
+                    </motion.button>
+                  </div>
+
+                  <div className="text-right min-w-[70px]">
+                    <motion.p
+                      key={item.quantity}
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
                     className="text-white font-black"
                   >
                     {item.price * item.quantity} جنيه
                   </motion.p>
+                  </div>
                 </div>
 
                 <motion.button
                   whileTap={{ scale: 0.85 }}
                   onClick={() => removeFromCart(item.productId)}
-                  className="text-zinc-600 hover:text-red-400 transition-colors ml-2"
+                  className="hidden sm:block text-zinc-600 hover:text-red-400 transition-colors flex-shrink-0"
                 >
                   <Trash2 size={18} />
                 </motion.button>
